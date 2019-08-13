@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UT -8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>World Happiness Report</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js" integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q==" crossorigin=""></script>
+  <!-- stylin' -->
+  <link rel="stylesheet" type="text/css" href="C:/Users/Jesus Redentor/Desktop/proyecto 3/Map Files/static/css/style.css">
+  <link rel="stylesheet" type="text/css" href="C:/Users/Jesus Redentor/Desktop/proyecto 3/Map Files/static/css/agency.css">
+  <!-- Custom fonts for this template -->
+  <!-- <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"> -->
+  <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans|Raleway|Roboto|Roboto+Mono|Roboto+Slab" rel="stylesheet">
+  <!-- favicon -->
+  <link rel="icon" type="image/png" href="C:/Users/Jesus Redentor/Desktop/proyecto 3/happy.png">
+  <!-- sliders -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.6.1/css/bootstrap-slider.css">
+
+    <!--D3 cdn-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.7/d3.min.js"></script>
+</head>
+
+  <!-- Leaflet CSS & JS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css" 
+  integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" 
+  crossorigin=""/> 
+  <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js" 
+  integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q==" 
+  crossorigin=""></script>
+
+  <!--D3 cdn-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.7/d3.min.js"></script>
+
+  <!-- Our CSS -->
+  <link rel="stylesheet" type="text/css" href="static/css/style.css">
+</head>
+<body>
+  <!-- navbar -->
+  <nav id="navbar">
+    <div class="navbar-header">
+      <a class="navbar-brand team-name" href="https://morbid-curiosity.herokuapp.com" style="padding-left:25px">World Happiness Report</a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="nav-item">
+          <a class="nav-link" target="#" href="C:/Users/Jesus Redentor/Desktop/proyecto 3/detail.html">About</a>
+        </li>
+        <li class="menu">
+          <a target="#_blank" href="https://github.com/hlbarker2/MorbidCuriosity" style="padding-right:20px">
+            <img width=25px src="C:/Users/Jesus Redentor/Desktop/proyecto 3/happy.png">
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- jumbotron & intro -->
+  <div class="row">
+    <div class="jumbotron text-center">
+      <div class="overlay"></div>
+      <div class="inner">
+       <!-- aqui van los titulos -->
+        <h1><span></span></h1>
+        <h3 class="h3-white"></h3>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <section id="services">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2 style="color:whitesmoke" class="section-heading text-uppercase">Navega</h2>
+          <h3 class="section-subheading text-muted">
+Haga clic en cualquiera de los iconos para navegar.</h3>
+        </div>
+      </div>
+      <div class="row text-center">
+        <div class="col-md-4">
+          <a href="#USAmortality"><img src="C:/Users/Jesus Redentor/Desktop/proyecto 3/USA-icon.png" width=180px alt="usa map icon" class="img-fluid"></a>
+          <h4 class="service-heading">World Map</h4>
+          <p class="text-muted">Aquí puedes consultar el puntaje de cada uno de los 156 países que integran el WHR 2019.</p>
+        </div>
+        <div class="col-md-4">
+          <a href="#SVI-data"><img src="C:/Users/Jesus Redentor/Desktop/proyecto 3/bar-icon.png" width=180px alt="bar graph icon" class="img-fluid"></a>
+          <h4 class="service-heading">Gráficas</h4>
+          <p class="text-muted">Consulta cuáles son las variables que más influyen en la felicidad de los países</p>
+        </div>
+        <div class="col-md-4">
+          <a href="#quiz"><img src="C:/Users/Jesus Redentor/Desktop/proyecto 3/quiz-icon.png" width=180px alt="quiz icon" class="img-fluid"></a>
+          <h4 class="service-heading">Predicción 2020</h4>
+          <p class="text-muted">Descubre nuestra predicción, gracias a Machine Learning, del Happiness Score de 102 países para el próximo año.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+ <!-- The div where we will inject our map -->
+ <div id="map"></div>
+ <script type="text/javascript" src="C:/Users/Jesus Redentor/Desktop/proyecto 3/static/js/codebeautify.json"></script>
+ <!-- API key -->
+ <script type="text/javascript" src="C:/Users/Jesus Redentor/Desktop/proyecto 3/static/js/config.js"></script>
+ <!-- Our JS -->
+ <script type="text/javascript" src="C:/Users/Jesus Redentor/Desktop/proyecto 3/static/js/finaldata.js"></script>
+ <script type="text/javascript" src="C:/Users/Jesus Redentor/Desktop/proyecto 3/static/js/logic.js"></script>
+
+  <!-- Our app.py -->
+  <script type="text/python" src="C:/Users/anton/Resources/Project 3/Geojson/app.py"></script>
+
+
+
+<!-- agregado por mi -->
+  <section class="bg-light" id="SVI-data" style="padding: 20px">
+    <div class="container">
+      <div class="row whitespace" >
+        <h2>Variables que Impactan en la Felicidad</h2>
+      </div>
+      <div class="row whitespace">
+        <div class="col-md-6">
+          <p>Entre las distintas variables que componen el Happiness Score, las tres que aparentemente tienen un mayor peso en la felicidad de los países son: Life Expectancy y Social Support</p>
+        </div>
+        <div class="col-md-6">
+          <img class="img-responsive center-block" width= 600px src="C:/Users/Jesus Redentor/Desktop/proyecto 3/1.png"><br>
+        </div>
+      </div>
+      <div class="row whitespace">
+        <div class="col-md-6">
+          <img class="img-responsive center-block" width= 600px src="C:/Users/Jesus Redentor/Desktop/proyecto 3/2.png"><br>
+        </div>
+        <div style="padding-left:50" class="col-md-6">
+          <p> Esta gráfica muestra la profunda correlación entre la variable de Social Support y el Happiness Score. 
+          </p>
+        </div>
+      </div>
+      <div class="row whitespace">
+        <div class="col-md-6">
+          <p>En el caso de la percepción alrededor de la corrupción se observa una correlación negativa, debido a la forma en que se reliza la pregunta a los ciudadanos. </p>
+        </div>
+        <div class="col-md-6">
+          <img class="img-responsive center-block" width= 600px src="C:/Users/Jesus Redentor/Desktop/proyecto 3/3.png"><br>
+        </div>
+      </div>
+      <div class="row whitespace">
+        <div class="col-md-6">
+          <img class="img-responsive center-block" width= 600px src="C:/Users/Jesus Redentor/Desktop/proyecto 3/4.png"><br>
+        </div>
+        <div style="padding-left:50" class="col-md-6">
+          <p> La generosidad se evalua a través de una pregunta directa donde se cuestiona si el ciudadano ha realizado una donación en los últimos 30 días. Esta variable, de acuerdo al análisis, tiene poco impacto en el puntaje final del Happiness Score.
+          </p>
+        </div> 
+    </div>
+  </section>
+
+  <div class="footer">Brought to you by Team Python@s in the 2019 Data Analytics Bootcamp.</div>
+  <!-- libraries -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-1.31.2.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script> <!-- chart.js -->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+  <!-- main visualizations -->
+
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.6.1/bootstrap-slider.js"></script>
+  <!-- <script src="{{ url_for('static', filename='js/app.js') }}"></script> -->
+
+  <script src="static/js/scatter.js"></script>
+  <script src="static/js/radar.js"></script> 
+  <script src="static/js/map.js"></script>
+  <!-- gauges -->
+  <script src="{{ url_for('static', filename='js/test.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/GAUGE-lifeExpectancy.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/GAUGE-Income.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/GAUGE-Education.js') }}"></script>
+  <script type="text/javascript" src="static/js/choropleth.js"></script>
+  <!-- fancy gauge CDNs -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/justgage/1.2.9/justgage.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/justgage/1.2.9/justgage.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/justgage/1.2.9/justgage.min.js.map"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.1/raphael-min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.1/raphael.js"></script>
+  <!-- Custom scripts for the 'navigate' section template code -->
+  <script src="js/agency.min.js"></script>
+  <!-- text showing up underneath gauges -->
+  <script src="{{ url_for('static', filename='js/text.js') }}"></script>
+  <script src="static/js/sweetalert2.all.min.js"></script>
+
+</body>
+
+</html>
